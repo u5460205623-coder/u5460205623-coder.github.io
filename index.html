@@ -8,11 +8,9 @@
   <style>
     :root {
       --bg: #070b12;
-      --bg2: #0d1320;
       --bg3: #111927;
       --cyan: #00e5ff;
       --purple: #b44dff;
-      --pink: #ff4daa;
       --text: #e8edf5;
       --muted: #7a8a9e;
       --card: #0f1c2e;
@@ -45,10 +43,8 @@
     body::after {
       content: '';
       position: fixed;
-      top: -200px;
-      left: -200px;
-      width: 600px;
-      height: 600px;
+      top: -200px; left: -200px;
+      width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
@@ -56,16 +52,14 @@
 
     .orb2 {
       position: fixed;
-      bottom: -200px;
-      right: -200px;
-      width: 700px;
-      height: 700px;
+      bottom: -200px; right: -200px;
+      width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(180,77,255,0.07) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* HEADER */
+    /* ── HEADER ── */
     header {
       position: relative;
       z-index: 10;
@@ -96,39 +90,121 @@
     }
     nav a:hover { color: var(--cyan); }
 
-    /* HERO LABEL */
-    .hero-label {
+    /* ── HERO ── */
+    .hero {
       position: relative;
       z-index: 10;
-      text-align: center;
-      padding: 64px 40px 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 80px 60px 72px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
     }
 
-    .hero-label h1 {
-      font-size: clamp(13px, 1.5vw, 15px);
+    .hero-left {
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s forwards;
+    }
+
+    .hero-eyebrow {
       font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero-left h1 .name-accent {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-right {
+      opacity: 0;
+      animation: fadeUp 0.7s 0.25s forwards;
+    }
+
+    .tagline-block {
+      margin-bottom: 36px;
+    }
+
+    .tagline-block .tagline-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .tagline-block p {
+      font-size: 17px;
+      font-weight: 700;
       color: var(--cyan);
+      line-height: 1.8;
+    }
+
+    .linkedin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 24px;
+      background: rgba(10, 102, 194, 0.12);
+      border: 1px solid rgba(10, 102, 194, 0.4);
+      border-radius: 8px;
+      color: #5ba4e5;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.5px;
+      transition: all 0.25s;
+    }
+    .linkedin-btn:hover {
+      background: rgba(10, 102, 194, 0.25);
+      box-shadow: 0 0 20px rgba(10, 102, 194, 0.2);
+    }
+    .linkedin-btn svg {
+      width: 18px; height: 18px;
+      fill: #5ba4e5;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 56px 60px 28px;
+    }
+
+    .section-label h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 8px;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.1s forwards;
+      color: var(--cyan);
     }
 
-    .hero-label p {
-      font-size: clamp(13px, 1.2vw, 14px);
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.3s forwards;
-    }
-
-    /* PROJECTS */
+    /* ── PROJECTS ── */
     .projects {
       position: relative;
       z-index: 10;
-      padding: 20px 60px 80px;
+      padding: 0 60px 72px;
       max-width: 1300px;
       margin: 0 auto;
     }
@@ -157,7 +233,6 @@
       box-shadow: 0 20px 60px rgba(0, 229, 255, 0.12);
       border-color: rgba(0, 229, 255, 0.35);
     }
-
     .project-card:nth-child(2):hover {
       box-shadow: 0 20px 60px rgba(180, 77, 255, 0.15);
       border-color: rgba(180, 77, 255, 0.35);
@@ -173,14 +248,12 @@
       overflow: hidden;
       position: relative;
     }
-
     .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top;
     }
-
     .thumb-placeholder {
       display: flex;
       flex-direction: column;
@@ -191,9 +264,7 @@
       font-size: 12px;
       letter-spacing: 1px;
     }
-
     .thumb-placeholder .icon { font-size: 32px; opacity: 0.4; }
-
     .thumb::after {
       content: '';
       position: absolute;
@@ -221,32 +292,28 @@
       border-radius: 4px;
       font-weight: 700;
     }
-
     .badge-cyan {
       background: rgba(0, 229, 255, 0.1);
       color: var(--cyan);
       border: 1px solid rgba(0, 229, 255, 0.25);
     }
-
     .badge-purple {
       background: rgba(180, 77, 255, 0.1);
       color: var(--purple);
       border: 1px solid rgba(180, 77, 255, 0.25);
     }
-
     .badge-time {
       background: rgba(255, 255, 255, 0.05);
       color: var(--muted);
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .card-body h2 {
+    .card-body h3 {
       font-size: 22px;
       font-weight: 800;
       margin-bottom: 12px;
       line-height: 1.2;
     }
-
     .card-body p {
       font-size: 14px;
       line-height: 1.7;
@@ -268,7 +335,6 @@
       transition: all 0.25s;
       font-family: 'Space Mono', monospace;
     }
-
     .link-cyan {
       background: rgba(0, 229, 255, 0.08);
       color: var(--cyan);
@@ -278,7 +344,6 @@
       background: rgba(0, 229, 255, 0.18);
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
     }
-
     .link-purple {
       background: rgba(180, 77, 255, 0.08);
       color: var(--purple);
@@ -289,7 +354,7 @@
       box-shadow: 0 0 20px rgba(180, 77, 255, 0.2);
     }
 
-    /* DIVIDER */
+    /* ── DIVIDER ── */
     .divider {
       position: relative;
       z-index: 10;
@@ -297,104 +362,18 @@
       margin: 0 auto;
       padding: 0 60px;
     }
-    .divider hr {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
 
-    /* BIO */
-    .bio-section {
-      position: relative;
-      z-index: 10;
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 72px 60px;
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .bio-left h2 {
-      font-size: clamp(36px, 4vw, 52px);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-
-    .bio-left h2 .name-accent {
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .bio-left .title-line {
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-family: 'Space Mono', monospace;
-      margin-bottom: 8px;
-    }
-
-    .bio-left .tagline {
-      font-size: 15px;
-      color: var(--cyan);
-      font-weight: 600;
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-
-    .linkedin-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 24px;
-      background: rgba(10, 102, 194, 0.12);
-      border: 1px solid rgba(10, 102, 194, 0.4);
-      border-radius: 8px;
-      color: #5ba4e5;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: 'Space Mono', monospace;
-      letter-spacing: 0.5px;
-      transition: all 0.25s;
-    }
-    .linkedin-btn:hover {
-      background: rgba(10, 102, 194, 0.25);
-      box-shadow: 0 0 20px rgba(10, 102, 194, 0.2);
-    }
-    .linkedin-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: #5ba4e5;
-      flex-shrink: 0;
-    }
-
-    .bio-right p {
-      font-size: 15px;
-      line-height: 1.85;
-      color: #b0bfce;
-      margin-bottom: 20px;
-    }
-
-    .tool-claude { color: var(--cyan); font-weight: 700; }
-    .tool-base44 { color: var(--purple); font-weight: 700; }
-    .tool-replit { color: #ff8c42; font-weight: 700; }
-    .tool-perplexity { color: #4dd9ac; font-weight: 700; }
-
-    /* SKILLS */
+    /* ── SKILLS ── */
     .skills-section {
       position: relative;
       z-index: 10;
       max-width: 1300px;
       margin: 0 auto;
-      padding: 0 60px 80px;
+      padding: 0 60px 72px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 48px;
     }
 
     .skill-block h3 {
@@ -421,6 +400,7 @@
       border: 1px solid var(--border);
       color: var(--text);
       transition: border-color 0.2s, color 0.2s;
+      cursor: default;
     }
     .skill-tag:hover {
       border-color: rgba(0, 229, 255, 0.4);
@@ -432,6 +412,7 @@
       font-weight: 700;
       padding: 7px 14px;
       border-radius: 6px;
+      cursor: default;
     }
     .tag-claude {
       background: rgba(0, 229, 255, 0.08);
@@ -449,7 +430,24 @@
       color: #4dd9ac;
     }
 
-    /* FOOTER */
+    /* ── ABOUT ── */
+    .about-section {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 60px 80px;
+    }
+
+    .about-section p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #b0bfce;
+      margin-bottom: 20px;
+      max-width: 860px;
+    }
+
+    /* ── FOOTER ── */
     footer {
       position: relative;
       z-index: 10;
@@ -466,9 +464,7 @@
       color: var(--muted);
       line-height: 1.6;
     }
-    .footer-left .footer-highlight {
-      color: var(--text);
-    }
+    .footer-left .footer-highlight { color: var(--text); }
     .footer-right {
       font-family: 'Space Mono', monospace;
       font-size: 11px;
@@ -484,13 +480,14 @@
     @media (max-width: 900px) {
       header { padding: 20px 24px; }
       nav { display: none; }
-      .projects { padding: 16px 24px 60px; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 48px; }
+      .section-label { padding: 40px 24px 20px; }
+      .projects { padding: 0 24px 60px; }
       .projects-grid { grid-template-columns: 1fr; }
-      .bio-section { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px; }
       .skills-section { grid-template-columns: 1fr; padding: 0 24px 60px; }
+      .about-section { padding: 0 24px 60px; }
       footer { flex-direction: column; gap: 12px; padding: 24px; text-align: center; }
       .divider { padding: 0 24px; }
-      .hero-label { padding: 48px 24px 32px; }
     }
   </style>
 </head>
@@ -498,18 +495,46 @@
 
 <div class="orb2"></div>
 
+<!-- HEADER -->
 <header>
   <div class="logo">Saichandar <span>/ Product</span></div>
   <nav>
     <a href="#projects">Work</a>
+    <a href="#skills">Skills</a>
     <a href="#about">About</a>
     <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank">LinkedIn</a>
   </nav>
 </header>
 
-<div class="hero-label" id="projects">
-  <h1>My Product Portfolio</h1>
-  <p>Ideas articulated → MVPs shipped → Outcomes delivered</p>
+<!-- HERO: Name + Tagline + LinkedIn -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Product Leader × AI Builder</div>
+    <h1>
+      <span class="name-accent">Saichandar</span><br />Brahadeesh
+    </h1>
+  </div>
+  <div class="hero-right">
+    <div class="tagline-block">
+      <div class="tagline-label">What I do</div>
+      <p>
+        Articulating Problems.<br />
+        Scoping MVPs.<br />
+        Shipping Outcomes.
+      </p>
+    </div>
+    <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank" class="linkedin-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      View LinkedIn
+    </a>
+  </div>
+</section>
+
+<!-- MY PRODUCT PORTFOLIO -->
+<div class="section-label" id="projects">
+  <h2>My Product Portfolio</h2>
 </div>
 
 <section class="projects">
@@ -518,14 +543,14 @@
     <div class="project-card">
       <div class="thumb">
         <img src="brand-hue-screenshot.png" alt="Brand Hue Lab Screenshot"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>🎨</div><span>Add brand-hue-screenshot.png</span></div>'" />
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>🎨</div><span>brand-hue-screenshot.png</span></div>'" />
       </div>
       <div class="card-body">
         <div class="card-meta">
           <span class="badge badge-cyan">Branding Tool</span>
           <span class="badge badge-time">⚡ Built in 7 days</span>
         </div>
-        <h2>Brand Hue Lab</h2>
+        <h3>Brand Hue Lab</h3>
         <p>
           Solo entrepreneurs waste months on inconsistent branding without design expertise or agency budgets.
           Brand Hue Lab instantly generates a complete, science-backed design system — colors, typography,
@@ -541,14 +566,14 @@
     <div class="project-card">
       <div class="thumb">
         <img src="focus-sound-screenshot.png" alt="Focus Sound Flow Screenshot"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>🎧</div><span>Add focus-sound-screenshot.png</span></div>'" />
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>🎧</div><span>focus-sound-screenshot.png</span></div>'" />
       </div>
       <div class="card-body">
         <div class="card-meta">
           <span class="badge badge-purple">Productivity</span>
           <span class="badge badge-time">⚡ Built in 2 days</span>
         </div>
-        <h2>Focus Mantra</h2>
+        <h3>Focus Mantra</h3>
         <p>
           Science-backed focus music, personalized for your personality, task, and environment.
           Answer a short questionnaire and get a curated sonic environment designed to put you
@@ -565,41 +590,10 @@
 
 <div class="divider"><hr /></div>
 
-<section class="bio-section" id="about">
-  <div class="bio-left">
-    <div class="title-line">Product Leader × AI Builder</div>
-    <h2><span class="name-accent">Saichandar</span><br />Brahadeesh</h2>
-    <p class="tagline">Articulating Problems.<br />Scoping MVPs.<br />Shipping Outcomes.</p>
-    <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank" class="linkedin-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-      View LinkedIn
-    </a>
-  </div>
-
-  <div class="bio-right">
-    <p>
-      I currently lead product initiatives at an industrial MNC, ensuring hardware and software worlds work
-      together seamlessly to deliver customer value and business outcomes. As a successful intrapreneur,
-      I specialize in incubating businesses from ground zero — having previously scaled a B2B platform
-      to its first €1M in revenue.
-    </p>
-    <p>
-      I am a practitioner of Design Thinking and high-stakes user research, from deep scientific studies
-      to quantitative market analysis. I ask the right questions to define the design systems and experiences
-      required to win business.
-    </p>
-    <p>
-      By day, I navigate complex industrial ecosystems; by night, I leverage AI Vibe Coding as the ultimate
-      engine for business results. Using a stack of <span class="tool-claude">Claude</span>,&nbsp;<span class="tool-base44">Base44</span>,
-      and <span class="tool-replit">Replit</span>, I radically compress the product lifecycle — scoping the MVP
-      for a vision and mastering the Launch → Iterate → Build cycle for agile delivery. This portfolio is my
-      living lab of solutions where every problem statement is articulated by me and every line of code is
-      driven by a strategic business goal.
-    </p>
-  </div>
-</section>
+<!-- SKILLS -->
+<div class="section-label" id="skills">
+  <h2>Skills &amp; Tools</h2>
+</div>
 
 <section class="skills-section">
   <div class="skill-block">
@@ -623,6 +617,35 @@
   </div>
 </section>
 
+<div class="divider"><hr /></div>
+
+<!-- ABOUT -->
+<div class="section-label" id="about">
+  <h2>About Me</h2>
+</div>
+
+<section class="about-section">
+  <p>
+    I currently lead product initiatives at an industrial MNC, ensuring hardware and software worlds work
+    together seamlessly to deliver customer value and business outcomes. As a successful intrapreneur,
+    I specialize in incubating businesses from ground zero — having previously scaled a B2B platform
+    to its first €1M in revenue.
+  </p>
+  <p>
+    I am a practitioner of Design Thinking and high-stakes user research, from deep scientific studies
+    to quantitative market analysis. I ask the right questions to define the design systems and experiences
+    required to win business.
+  </p>
+  <p>
+    By day, I navigate complex industrial ecosystems; by night, I leverage AI Vibe Coding as the ultimate
+    engine for business results. Using a stack of Claude, Base44, and Perplexity, I radically compress
+    the product lifecycle — scoping the MVP for a vision and mastering the Launch → Iterate → Build cycle
+    for agile delivery. This portfolio is my living lab of solutions where every problem statement is
+    articulated by me and every line of code is driven by a strategic business goal.
+  </p>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-left">
     <span class="footer-highlight">Every problem is mine. Every line of code serves a business goal.</span><br />
