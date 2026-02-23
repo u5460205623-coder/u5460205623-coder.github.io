@@ -2,665 +2,634 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Saichandar Brahadeesh · Product Leader × AI Architect</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Product Portfolio — Saichandar Brahadeesh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #050810;
-      --surface: #0c1120;
-      --surface2: #111827;
-      --cyan: #00f5ff;
-      --purple: #a855f7;
-      --cyan-dim: rgba(0,245,255,0.15);
-      --purple-dim: rgba(168,85,247,0.15);
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --border: rgba(0,245,255,0.12);
+      --bg: #070b12;
+      --bg2: #0d1320;
+      --bg3: #111927;
+      --cyan: #00e5ff;
+      --purple: #b44dff;
+      --pink: #ff4daa;
+      --text: #e8edf5;
+      --muted: #7a8a9e;
+      --card: #0f1c2e;
+      --border: rgba(0, 229, 255, 0.12);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Syne', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ── GRID BACKGROUND ── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── GLOW ORBS ── */
-    .orb {
+    body::after {
+      content: '';
       position: fixed;
-      border-radius: 50%;
-      filter: blur(100px);
+      top: -200px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.25;
-    }
-    .orb-1 {
-      width: 500px; height: 500px;
-      background: var(--cyan);
-      top: -150px; left: -150px;
-      animation: driftA 18s ease-in-out infinite alternate;
-    }
-    .orb-2 {
-      width: 400px; height: 400px;
-      background: var(--purple);
-      bottom: -100px; right: -100px;
-      animation: driftB 22s ease-in-out infinite alternate;
     }
 
-    @keyframes driftA { to { transform: translate(80px, 60px); } }
-    @keyframes driftB { to { transform: translate(-60px, -80px); } }
-
-    /* ── LAYOUT ── */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── NAV ── */
-    nav {
+    .orb2 {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 18px 0;
-      background: rgba(5,8,16,0.8);
-      backdrop-filter: blur(16px);
+      bottom: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(180,77,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* HEADER */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
       border-bottom: 1px solid var(--border);
     }
-    nav .inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
+
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
       color: var(--cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
-    .nav-links a {
+    .logo span { color: var(--muted); }
+
+    nav a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-family: 'DM Mono', monospace;
-      margin-left: 28px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-left: 32px;
       transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--cyan); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-    }
-    .hero-inner {
-      width: 100%;
-    }
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--cyan);
-      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
     }
-    .hero-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: #fff;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
-    }
-    .hero-name span {
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-title {
-      font-family: 'DM Mono', monospace;
-      font-size: clamp(0.9rem, 2vw, 1.15rem);
-      color: var(--muted);
-      margin-top: 16px;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
-    }
-    .hero-title em {
-      color: var(--text);
-      font-style: normal;
-    }
-    .hero-bio {
-      margin-top: 28px;
-      max-width: 680px;
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.8s forwards;
-    }
-    .hero-bio strong { color: var(--text); font-weight: 500; }
+    nav a:hover { color: var(--cyan); }
 
-    .hero-actions {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      opacity: 0;
-      animation: fadeUp 0.8s 1.0s forwards;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 28px;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      color: #050810;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      background: transparent;
-      color: var(--cyan);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s, border-color 0.2s;
-    }
-    .btn-ghost:hover {
-      background: var(--cyan-dim);
-      border-color: var(--cyan);
-      transform: translateY(-2px);
-    }
-
-    /* Copy LinkedIn */
-    .linkedin-copy {
+    /* HERO LABEL */
+    .hero-label {
       position: relative;
-    }
-    .copy-toast {
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--cyan);
-      color: #050810;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      padding: 4px 12px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .copy-toast.show { opacity: 1; }
-
-    /* ── DIVIDER ── */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-      margin: 80px 0;
-      opacity: 0.3;
-    }
-
-    /* ── SECTION LABEL ── */
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--cyan);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .section-heading {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      color: #fff;
-      line-height: 1.15;
-      margin-bottom: 48px;
-    }
-    .section-heading span {
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ── STATS ROW ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 80px;
-    }
-    .stat {
-      background: var(--surface);
-      padding: 32px 28px;
+      z-index: 10;
       text-align: center;
-    }
-    .stat-number {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 2.2rem;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 6px;
-      letter-spacing: 0.05em;
+      padding: 64px 40px 40px;
     }
 
-    /* ── WORK CARDS ── */
-    .work-grid {
+    .hero-label h1 {
+      font-size: clamp(13px, 1.5vw, 15px);
+      font-family: 'Space Mono', monospace;
+      color: var(--cyan);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+
+    .hero-label p {
+      font-size: clamp(13px, 1.2vw, 14px);
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.3s forwards;
+    }
+
+    /* PROJECTS */
+    .projects {
+      position: relative;
+      z-index: 10;
+      padding: 20px 60px 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 32px;
     }
 
-    @media (max-width: 700px) {
-      .work-grid { grid-template-columns: 1fr; }
-      .stats-row { grid-template-columns: 1fr; }
-      nav .nav-links { display: none; }
-    }
-
-    .work-card {
-      background: var(--surface);
+    .project-card {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-    .work-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
+      animation: fadeUp 0.7s forwards;
     }
-    .work-card:hover {
+
+    .project-card:nth-child(1) { animation-delay: 0.4s; }
+    .project-card:nth-child(2) { animation-delay: 0.55s; }
+
+    .project-card:hover {
       transform: translateY(-6px);
-      border-color: var(--cyan);
-      box-shadow: 0 0 30px rgba(0,245,255,0.12);
-    }
-    .work-card:hover::before { opacity: 1; }
-
-    .card-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      background: var(--surface2);
+      box-shadow: 0 20px 60px rgba(0, 229, 255, 0.12);
+      border-color: rgba(0, 229, 255, 0.35);
     }
 
-    /* Placeholder when no image */
-    .card-thumb-placeholder {
+    .project-card:nth-child(2):hover {
+      box-shadow: 0 20px 60px rgba(180, 77, 255, 0.15);
+      border-color: rgba(180, 77, 255, 0.35);
+    }
+
+    .thumb {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--surface2);
+      height: 240px;
+      background: var(--bg3);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      border-bottom: 1px solid var(--border);
-      position: relative;
       overflow: hidden;
-    }
-    .card-thumb-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(0,245,255,0.03) 10px,
-        rgba(0,245,255,0.03) 20px
-      );
+      position: relative;
     }
 
-    .card-body {
-      padding: 24px;
-      position: relative;
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
     }
-    .card-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--purple);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .card-desc {
-      font-size: 0.9rem;
+
+    .thumb-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 20px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
     }
+
+    .thumb-placeholder .icon { font-size: 32px; opacity: 0.4; }
+
+    .thumb::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, var(--card));
+      pointer-events: none;
+    }
+
+    .card-body { padding: 28px 32px 32px; }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .badge-cyan {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+    }
+
+    .badge-purple {
+      background: rgba(180, 77, 255, 0.1);
+      color: var(--purple);
+      border: 1px solid rgba(180, 77, 255, 0.25);
+    }
+
+    .badge-time {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card-body h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #9aabb8;
+      margin-bottom: 24px;
+    }
+
     .card-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--cyan);
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-      padding-bottom: 2px;
+      transition: all 0.25s;
+      font-family: 'Space Mono', monospace;
     }
-    .card-link:hover { border-color: var(--cyan); }
-    .card-link svg { transition: transform 0.2s; }
-    .card-link:hover svg { transform: translate(2px,-2px); }
 
-    /* ── STACK ── */
-    .stack-pills {
+    .link-cyan {
+      background: rgba(0, 229, 255, 0.08);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+    .link-cyan:hover {
+      background: rgba(0, 229, 255, 0.18);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+    }
+
+    .link-purple {
+      background: rgba(180, 77, 255, 0.08);
+      color: var(--purple);
+      border: 1px solid rgba(180, 77, 255, 0.3);
+    }
+    .link-purple:hover {
+      background: rgba(180, 77, 255, 0.18);
+      box-shadow: 0 0 20px rgba(180, 77, 255, 0.2);
+    }
+
+    /* DIVIDER */
+    .divider {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .divider hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* BIO */
+    .bio-section {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 72px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .bio-left h2 {
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .bio-left h2 .name-accent {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bio-left .title-line {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace;
+      margin-bottom: 8px;
+    }
+
+    .bio-left .tagline {
+      font-size: 15px;
+      color: var(--cyan);
+      font-weight: 600;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .linkedin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 24px;
+      background: rgba(10, 102, 194, 0.12);
+      border: 1px solid rgba(10, 102, 194, 0.4);
+      border-radius: 8px;
+      color: #5ba4e5;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.5px;
+      transition: all 0.25s;
+    }
+    .linkedin-btn:hover {
+      background: rgba(10, 102, 194, 0.25);
+      box-shadow: 0 0 20px rgba(10, 102, 194, 0.2);
+    }
+    .linkedin-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #5ba4e5;
+      flex-shrink: 0;
+    }
+
+    .bio-right p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #b0bfce;
+      margin-bottom: 20px;
+    }
+
+    .tool-claude { color: var(--cyan); font-weight: 700; }
+    .tool-base44 { color: var(--purple); font-weight: 700; }
+    .tool-replit { color: #ff8c42; font-weight: 700; }
+    .tool-perplexity { color: #4dd9ac; font-weight: 700; }
+
+    /* SKILLS */
+    .skills-section {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 60px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .skill-block h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .skill-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 48px;
-    }
-    .pill {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      padding: 7px 16px;
-      border-radius: 100px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: var(--surface);
-      transition: all 0.2s;
-    }
-    .pill:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-      background: var(--cyan-dim);
     }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      margin-top: 100px;
-      text-align: center;
+    .skill-tag {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
     }
-    footer p {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-    footer p span {
+    .skill-tag:hover {
+      border-color: rgba(0, 229, 255, 0.4);
       color: var(--cyan);
+    }
+
+    .tool-tag {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 6px;
+    }
+    .tag-claude {
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      color: var(--cyan);
+    }
+    .tag-base44 {
+      background: rgba(180, 77, 255, 0.08);
+      border: 1px solid rgba(180, 77, 255, 0.25);
+      color: var(--purple);
+    }
+    .tag-perplexity {
+      background: rgba(77, 217, 172, 0.08);
+      border: 1px solid rgba(77, 217, 172, 0.25);
+      color: #4dd9ac;
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--border);
+      padding: 32px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-left .footer-highlight {
+      color: var(--text);
+    }
+    .footer-right {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
     }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 900px) {
+      header { padding: 20px 24px; }
+      nav { display: none; }
+      .projects { padding: 16px 24px 60px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .bio-section { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px; }
+      .skills-section { grid-template-columns: 1fr; padding: 0 24px 60px; }
+      footer { flex-direction: column; gap: 12px; padding: 24px; text-align: center; }
+      .divider { padding: 0 24px; }
+      .hero-label { padding: 48px 24px 32px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
+<div class="orb2"></div>
 
-  <!-- NAV -->
+<header>
+  <div class="logo">Saichandar <span>/ Product</span></div>
   <nav>
-    <div class="inner">
-      <div class="nav-logo">SB_</div>
-      <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#stack">Stack</a>
-        <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank">LinkedIn ↗</a>
-      </div>
-    </div>
+    <a href="#projects">Work</a>
+    <a href="#about">About</a>
+    <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank">LinkedIn</a>
   </nav>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <p class="hero-tag">// Portfolio · 2025</p>
-      <h1 class="hero-name">Saichandar<br/><span>Brahadeesh</span></h1>
-      <p class="hero-title"><em>Product Leader</em> × <em>AI Architect</em><br/>Articulating Problems. Scoping MVPs. Shipping Outcomes.</p>
-      <p class="hero-bio">
-        I lead product initiatives at an industrial MNC where <strong>hardware meets software</strong> to deliver real business outcomes.
-        A practitioner of Design Thinking and high-stakes user research, I specialize in incubating businesses from zero—
-        having previously <strong>scaled a B2B platform to its first €1M in revenue</strong>.
-        I leverage AI Vibe Coding (Claude × Base44 × Replit) to radically compress the product lifecycle.
-        This portfolio is my <strong>living lab</strong>—every problem statement articulated by me, every line of code driven by strategy.
-      </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn-primary">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          View My Work
-        </a>
-        <div class="linkedin-copy">
-          <button class="btn-ghost" onclick="copyLinkedIn(this)">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            Copy LinkedIn
-          </button>
-          <div class="copy-toast" id="copyToast">Copied!</div>
+<div class="hero-label" id="projects">
+  <h1>My Product Portfolio</h1>
+  <p>Ideas articulated → MVPs shipped → Outcomes delivered</p>
+</div>
+
+<section class="projects">
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="thumb">
+        <img src="brand-hue-screenshot.png" alt="Brand Hue Lab Screenshot"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>🎨</div><span>Add brand-hue-screenshot.png</span></div>'" />
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge badge-cyan">Branding Tool</span>
+          <span class="badge badge-time">⚡ Built in 7 days</span>
         </div>
-        <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank" class="btn-ghost">
-          View LinkedIn ↗
+        <h2>Brand Hue Lab</h2>
+        <p>
+          Solo entrepreneurs waste months on inconsistent branding without design expertise or agency budgets.
+          Brand Hue Lab instantly generates a complete, science-backed design system — colors, typography,
+          layouts, and tone — from your emotions and business type. Grounded in color-emotion research and
+          archetype psychology. No design degree needed.
+        </p>
+        <a href="https://brand-hue-lab.base44.app/Landing" target="_blank" class="card-link link-cyan">
+          View Live →
         </a>
       </div>
     </div>
-  </section>
 
-  <!-- STATS -->
-  <div class="container">
-    <div class="stats-row reveal" id="work">
-      <div class="stat">
-        <div class="stat-number">€1M+</div>
-        <div class="stat-label">Revenue Scaled</div>
+    <div class="project-card">
+      <div class="thumb">
+        <img src="focus-sound-screenshot.png" alt="Focus Sound Flow Screenshot"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>🎧</div><span>Add focus-sound-screenshot.png</span></div>'" />
       </div>
-      <div class="stat">
-        <div class="stat-number">128yr</div>
-        <div class="stat-label">Research Leverage</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">0→1</div>
-        <div class="stat-label">MVP Velocity</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge badge-purple">Productivity</span>
+          <span class="badge badge-time">⚡ Built in 2 days</span>
+        </div>
+        <h2>Focus Mantra</h2>
+        <p>
+          Science-backed focus music, personalized for your personality, task, and environment.
+          Answer a short questionnaire and get a curated sonic environment designed to put you
+          in the zone — fast.
+        </p>
+        <a href="https://focus-sound-flow.base44.app/Questionnaire" target="_blank" class="card-link link-purple">
+          View Live →
+        </a>
       </div>
     </div>
+
+  </div>
+</section>
+
+<div class="divider"><hr /></div>
+
+<section class="bio-section" id="about">
+  <div class="bio-left">
+    <div class="title-line">Product Leader × AI Builder</div>
+    <h2><span class="name-accent">Saichandar</span><br />Brahadeesh</h2>
+    <p class="tagline">Articulating Problems.<br />Scoping MVPs.<br />Shipping Outcomes.</p>
+    <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank" class="linkedin-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      View LinkedIn
+    </a>
   </div>
 
-  <!-- WORK -->
-  <section class="container" style="padding-bottom: 20px;">
-    <div class="reveal">
-      <p class="section-label">// Featured Work</p>
-      <h2 class="section-heading">Products I've<br/><span>Built & Shipped</span></h2>
+  <div class="bio-right">
+    <p>
+      I currently lead product initiatives at an industrial MNC, ensuring hardware and software worlds work
+      together seamlessly to deliver customer value and business outcomes. As a successful intrapreneur,
+      I specialize in incubating businesses from ground zero — having previously scaled a B2B platform
+      to its first €1M in revenue.
+    </p>
+    <p>
+      I am a practitioner of Design Thinking and high-stakes user research, from deep scientific studies
+      to quantitative market analysis. I ask the right questions to define the design systems and experiences
+      required to win business.
+    </p>
+    <p>
+      By day, I navigate complex industrial ecosystems; by night, I leverage AI Vibe Coding as the ultimate
+      engine for business results. Using a stack of <span class="tool-claude">Claude</span>,&nbsp;<span class="tool-base44">Base44</span>,
+      and <span class="tool-replit">Replit</span>, I radically compress the product lifecycle — scoping the MVP
+      for a vision and mastering the Launch → Iterate → Build cycle for agile delivery. This portfolio is my
+      living lab of solutions where every problem statement is articulated by me and every line of code is
+      driven by a strategic business goal.
+    </p>
+  </div>
+</section>
+
+<section class="skills-section">
+  <div class="skill-block">
+    <h3>Skill Set</h3>
+    <div class="skill-tags">
+      <span class="skill-tag">Design Thinking</span>
+      <span class="skill-tag">User Research</span>
+      <span class="skill-tag">Scientific Research</span>
+      <span class="skill-tag">MVP Definition</span>
+      <span class="skill-tag">Agile Mindset</span>
+      <span class="skill-tag">Product Requirements</span>
     </div>
-
-    <div class="work-grid">
-
-      <!-- Card 1: BrandHue Lab -->
-      <div class="work-card reveal">
-        <!-- REPLACE src below with: src="brandhue-screenshot.png" after adding the file to your repo -->
-        <img
-          class="card-thumb"
-          src="brandhue-screenshot.png"
-          alt="BrandHue Lab Screenshot"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="card-thumb-placeholder" style="display:none;">
-          SCREENSHOT · brandhue-screenshot.png
-        </div>
-        <div class="card-body">
-          <p class="card-tag">Branding · Design Systems</p>
-          <h3 class="card-title">BrandHue Lab</h3>
-          <p class="card-desc">
-            Solo entrepreneurs waste months on inconsistent branding without design expertise.
-            BrandHue instantly generates <strong style="color:var(--text)">complete, science-backed design systems</strong>—
-            colors, typography, layouts, and tone—from your emotions and business type.
-            Powered by 128+ years of color-emotion research and archetype psychology. No design degree needed.
-          </p>
-          <a href="https://brand-hue-lab.base44.app/Landing" target="_blank" class="card-link">
-            Launch App
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 2: Focus Sound Flow -->
-      <div class="work-card reveal">
-        <!-- REPLACE src below with: src="focussound-screenshot.png" after adding the file to your repo -->
-        <img
-          class="card-thumb"
-          src="focussound-screenshot.png"
-          alt="Focus Sound Flow Screenshot"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="card-thumb-placeholder" style="display:none;">
-          SCREENSHOT · focussound-screenshot.png
-        </div>
-        <div class="card-body">
-          <p class="card-tag">Productivity · Neuroscience</p>
-          <h3 class="card-title">Focus Mantra</h3>
-          <p class="card-desc">
-            Not all focus music is created equal. Focus Mantra delivers
-            <strong style="color:var(--text)">science-backed focus soundscapes</strong>
-            personalized for your personality type, current task, and environment—
-            so your brain gets exactly what it needs to enter deep work.
-          </p>
-          <a href="https://focus-sound-flow.base44.app/Questionnaire" target="_blank" class="card-link">
-            Launch App
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </a>
-        </div>
-      </div>
-
+  </div>
+  <div class="skill-block">
+    <h3>AI Tools Stack</h3>
+    <div class="skill-tags">
+      <span class="tool-tag tag-claude">Claude</span>
+      <span class="tool-tag tag-base44">Base44</span>
+      <span class="tool-tag tag-perplexity">Perplexity</span>
     </div>
+  </div>
+</section>
 
-    <!-- STACK -->
-    <div id="stack" style="margin-top: 80px;" class="reveal">
-      <p class="section-label">// My AI Vibe Stack</p>
-      <h2 class="section-heading">Tools That Power<br/><span>My Lab</span></h2>
-      <div class="stack-pills">
-        <span class="pill">Claude AI</span>
-        <span class="pill">Base44</span>
-        <span class="pill">Replit</span>
-        <span class="pill">Design Thinking</span>
-        <span class="pill">User Research</span>
-        <span class="pill">MVP Scoping</span>
-        <span class="pill">Launch → Iterate → Build</span>
-        <span class="pill">Color Theory</span>
-        <span class="pill">Archetype Psychology</span>
-        <span class="pill">B2B Product</span>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div class="footer-left">
+    <span class="footer-highlight">Every problem is mine. Every line of code serves a business goal.</span><br />
+    Articulated by me. Powered by AI. Shipped with purpose.
+  </div>
+  <div class="footer-right">Saichandar Brahadeesh</div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p>Built by <span>Saichandar Brahadeesh</span> · Every line of code driven by a strategic business goal.</p>
-      <p style="margin-top:8px;">
-        <a href="https://www.linkedin.com/in/saichandarbrahadeesh" target="_blank" style="color:var(--cyan); text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">linkedin.com/in/saichandarbrahadeesh ↗</a>
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    // Copy LinkedIn to clipboard
-    function copyLinkedIn(btn) {
-      navigator.clipboard.writeText('https://www.linkedin.com/in/saichandarbrahadeesh').then(() => {
-        const toast = document.getElementById('copyToast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
-      });
-    }
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
 </body>
 </html>
