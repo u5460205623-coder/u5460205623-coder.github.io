@@ -211,7 +211,7 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 32px;
     }
 
@@ -227,6 +227,7 @@
 
     .project-card:nth-child(1) { animation-delay: 0.4s; }
     .project-card:nth-child(2) { animation-delay: 0.55s; }
+    .project-card:nth-child(3) { animation-delay: 0.7s; }
 
     .project-card:hover {
       transform: translateY(-6px);
@@ -236,6 +237,25 @@
     .project-card:nth-child(2):hover {
       box-shadow: 0 20px 60px rgba(180, 77, 255, 0.15);
       border-color: rgba(180, 77, 255, 0.35);
+    }
+    .project-card:nth-child(3):hover {
+      box-shadow: 0 20px 60px rgba(255, 180, 0, 0.15);
+      border-color: rgba(255, 180, 0, 0.35);
+    }
+
+    .badge-gold {
+      background: rgba(255, 180, 0, 0.1);
+      color: #ffb400;
+      border: 1px solid rgba(255, 180, 0, 0.25);
+    }
+    .link-gold {
+      background: rgba(255, 180, 0, 0.08);
+      color: #ffb400;
+      border: 1px solid rgba(255, 180, 0, 0.3);
+    }
+    .link-gold:hover {
+      background: rgba(255, 180, 0, 0.18);
+      box-shadow: 0 0 20px rgba(255, 180, 0, 0.2);
     }
 
     .thumb {
@@ -484,6 +504,7 @@
       .section-label { padding: 40px 24px 20px; }
       .projects { padding: 0 24px 60px; }
       .projects-grid { grid-template-columns: 1fr; }
+      .project-card:nth-child(3) { animation-delay: 0.7s; }
       .skills-section { grid-template-columns: 1fr; padding: 0 24px 60px; }
       .about-section { padding: 0 24px 60px; }
       footer { flex-direction: column; gap: 12px; padding: 24px; text-align: center; }
@@ -580,6 +601,28 @@
           in the zone — fast.
         </p>
         <a href="https://focus-sound-flow.base44.app/Questionnaire" target="_blank" class="card-link link-purple">
+          View Live →
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="thumb">
+        <img src="expat-invest-screenshot.png" alt="Expat Invest Compare Screenshot"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'thumb-placeholder\'><div class=\'icon\'>💹</div><span>expat-invest-screenshot.png</span></div>'" />
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge badge-gold">Finance Tool</span>
+          <span class="badge badge-time">⚡ Built in 1 hour</span>
+        </div>
+        <h3>Expat Invest Compare</h3>
+        <p>
+          Expat Indians in France face a real dilemma: invest in Indian Fixed Deposits or French Livret A?
+          This tool compares net ROI side-by-side, accounting for INR/EUR currency depreciation and fees —
+          turning a complex financial decision into a clear, data-driven answer.
+        </p>
+        <a href="https://expat-invest-compare.base44.app" target="_blank" class="card-link link-gold">
           View Live →
         </a>
       </div>
